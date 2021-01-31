@@ -1,0 +1,170 @@
+
+/*------------------------
+    Custom Media Queries
+--------------------------*/
+
+@media(max-width:1680px) {
+    #socialMedia{
+        display: block;
+    }
+
+}
+
+@media(max-width:1600px) {
+    #socialMedia{
+        display: block;
+    }
+
+}
+
+@media(max-width:1580px) {
+    #socialMedia{
+        display: block;
+    }
+
+
+}
+
+@media(max-width:1440px){
+    #socialMedia{
+        display: block;
+    }
+
+}
+
+@media(max-width:1366px){
+    #socialMedia{
+        display: block;
+    }
+
+}
+
+@media(max-width:1280px){
+    #socialMedia{
+        display: block;
+    }
+
+}
+
+@media(max-width:1080px) {
+    #socialMedia{
+        display: block;
+    }
+
+}
+
+@media(max-width:1050px) {
+    #socialMedia{
+        display: block;
+    }
+
+}
+
+@media(max-width:1024px) {
+    #socialMedia{
+        display: block;
+    }
+
+}
+
+@media(max-width:991px){
+    #socialMedia{
+        display: block;
+    }
+}
+
+@media(max-width:900px){
+    #socialMedia{
+        display: block;
+    }
+}
+
+@media(max-width:800px){
+    #socialMedia{
+        display: block;
+    }
+}
+
+@media (max-width:768px){
+    #socialMedia{
+        display: block;
+    }
+}
+
+@media (max-width:767px) {
+    #socialMedia{
+        display: block;
+    }
+}
+
+@media(max-width:736px) {
+    #socialMedia{
+        display: block;
+    }
+
+}
+
+@media(max-width:667px) {
+     #socialMedia{
+        display: block;
+    }
+
+}
+
+@media(max-width:640px) {
+     #socialMedia{
+        display: none;
+    }
+
+}
+
+@media(max-width:600px) {
+    #socialMedia{
+        display: none;
+    }
+
+}
+
+@media(max-width:568px) {
+    #socialMedia{
+        display: none;
+    }
+
+}
+
+@media(max-width:480px) {
+    #socialMedia{
+        display: none;
+    }
+
+}
+
+@media(max-width:414px) {
+    #socialMedia{
+        display: none;
+    }
+}
+
+@media(max-width:384px) {
+    #socialMedia{
+        display: none;
+    }
+}
+
+@media(max-width:375px) {
+    #socialMedia{
+        display: none;
+    }
+
+}
+
+@media(max-width:320px){
+    #socialMedia{
+        display: none;
+    }
+}
+
+/*-----------------------------
+ End Responsive Media Queries
+------------------------------*/
+
