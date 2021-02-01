@@ -18,6 +18,18 @@
 <body>
 
     {% include 'base/nav.html' %}
+    <!--- Massage Framework --->
+    {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="text-center">
+              <span>{{ message }}</span>
+          </div>
+      </div>
+    {% endfor %}
+    <!---- End Message --->
     {% block content %}
 
 
