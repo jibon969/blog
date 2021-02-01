@@ -11,6 +11,11 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def contact(request):
+    """
+    This function based view work for contact form
+    :param request:
+    :return:
+    """
     form = ContactForm(request.POST or None)
     errors = None
     if form.is_valid():
