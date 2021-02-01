@@ -7,13 +7,66 @@
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
                 <div class="card">
-                    <h4 class="card-header text-center font-weight-bold">Contact Us</h4>
-                </div>
-                <div class="card-body">
-
+                    <div class="card-header">
+                        <h4 class="text-center font-weight-bold">Contact Us</h4>
+                    </div>
+                    <div class="card-body">
+                        {% if errors %}
+                            {{ errors }}
+                        {% endif %}
+                        <form id="contact-form" method="post"  role="form">
+                            {% csrf_token %}
+                            <div class="control">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input id="form_subject" type="text" name="subject" class="form-control" required="required" data-error="Subject is required." placeholder="Subject *">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <!-- Full Name --->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input id="form_fullname" type="text" name="name" class="form-control" required="required" data-error="Fullname is required." placeholder="Full name *">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!---- Email --->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input id="form_email" type="email" name="email" class="form-control"  required="required" data-error="Valid email is required." placeholder="E-mail *">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <!---- Phone ------>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Phone *">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Message -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea id="form_message" name="message" class="form-control" placeholder="Write your message *" rows="3" required="required" data-error="Please, leave us a message"></textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="submit" class="btn btn-primary btn-block" value="Send message">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <div style="margin-top: 20px !important;"></div>
 {% endblock content %}
