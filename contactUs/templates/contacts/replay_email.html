@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %} Replay Form || {{ block.super }}{% endblock title %}
+{% block content %}
+
+
+    <section id="contactSection">
+        <div class="container">
+            <!--- Replay form -------------------->
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                    <div class="card my-5">
+                        <h4 class="card-header text-center">
+                            Replay Customer Form
+                        </h4>
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <button type="submit" class="btn btn-info btn-block">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div style="margin-top: 150px"></div>
+{% endblock content %}
