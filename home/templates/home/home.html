@@ -4,152 +4,109 @@
 
 {% block content %}
 
+    <div class="jumbotron-fluid" style="background: #29B6F6">
+        <div class="container">
+            <h1 class="text-center" style="font-size:3vw; color: white; margin-bottom:0;">Engineering Stack</h1>
+            <p class="text-center" style="font-size:2.2vw; color: white;">Learn, share and advance your professional career</p>
+        </div>
+    </div>
 
-    <section id="sliderSection">
-        {% if object_list.exists %}
-            <!------------------------------------ Dynamic Slider ----------------------->
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    {% for s in object_list %}
-                        {% if s.url_field %}
-                            {% if forloop.counter == 1 %}
-                                <div class="carousel-item active">
-                                    <a href="{{ s.url_field }}">
-                                        <picture>
-                                            {% if s.largeDevices %}
-                                                <!--------- Large devices (laptops/desktops, 992px and up) --------->
-                                                <source srcset="{{ s.largeDevices.url }}" media="(min-width: 768px)">
-                                            {% endif %}
-                                            {% if s.mediumDevices %}
-                                                <!--------- Medium devices (landscape tablets, 768px and up) -------->
-                                                <source srcset="{{ s.mediumDevices.url }}" media="(min-width: 576px)">
-                                            {% endif %}
-                                            {% if s.smallDevices %}
-                                                <img  src="{{ s.smallDevices.url }}" alt="responsive image" class="d-block img-fluid">
-                                                <!---------------- Small devices phones, large phones, 600px and up) ------------------>
-                                            {% endif %}
-                                        </picture>
-                                    </a>
-                                </div>
-                            {% else %}
-                                <div class="carousel-item">
-                                    <a href="{{ s.url_field }}">
-                                        <picture>
-                                            {% if s.largeDevices %}
-                                                <!--------- Large devices (laptops/desktops, 992px and up) --------->
-                                                <source srcset="{{ s.largeDevices.url }}" media="(min-width: 768px)">
-                                            {% endif %}
-                                            {% if s.mediumDevices %}
-                                                <!--------- Medium devices (landscape tablets, 768px and up) -------->
-                                                <source srcset="{{ s.mediumDevices.url }}" media="(min-width: 576px)">
-                                            {% endif %}
-                                            {% if s.smallDevices %}
-                                                <img  src="{{ s.smallDevices.url }}" alt="responsive image" class="d-block img-fluid">
-                                                <!---------------- Small devices phones, large phones, 600px and up) ------------------>
-                                            {% endif %}
-                                        </picture>
-                                    </a>
-                                </div>
-                            {% endif %}
-                        {% else %}
-                            {% if forloop.counter == 1 %}
-                                <div class="carousel-item active">
-                                    <a href="#">
-                                        <picture>
-                                            {% if s.largeDevices %}
-                                                <!--------- Large devices (laptops/desktops, 992px and up) --------->
-                                                <source srcset="{{ s.largeDevices.url }}" media="(min-width: 768px)">
-                                            {% endif %}
-                                            {% if s.mediumDevices %}
-                                                <!--------- Medium devices (landscape tablets, 768px and up) -------->
-                                                <source srcset="{{ s.mediumDevices.url }}" media="(min-width: 576px)">
-                                            {% endif %}
-                                            {% if s.smallDevices %}
-                                                <img  src="{{ s.smallDevices.url }}" alt="responsive image" class="d-block img-fluid">
-                                                <!---------------- Small devices phones, large phones, 600px and up) ------------------>
-                                            {% endif %}
-                                        </picture>
-                                    </a>
-                                </div>
-                            {% else %}
-                                <div class="carousel-item">
-                                    <a href="#">
-                                        <picture>
-                                            {% if s.largeDevices %}
-                                                <!--------- Large devices (laptops/desktops, 992px and up) --------->
-                                                <source srcset="{{ s.largeDevices.url }}" media="(min-width: 768px)">
-                                            {% endif %}
-                                            {% if s.mediumDevices %}
-                                                <!--------- Medium devices (landscape tablets, 768px and up) -------->
-                                                <source srcset="{{ s.mediumDevices.url }}" media="(min-width: 576px)">
-                                            {% endif %}
-                                            {% if s.smallDevices %}
-                                                <img  src="{{ s.smallDevices.url }}" alt="responsive image" class="d-block img-fluid">
-                                                <!---------------- Small devices phones, large phones, 600px and up) ------------------>
-                                            {% endif %}
-                                        </picture>
-                                    </a>
-                                </div>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        {% else %}
-            <!------------------------------------- Static Slider ----------------------->
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                         <picture>
-                             <!----- Large devices (laptops/desktops, 992px and up) ------->
-                             <source srcset="{% static 'img/2000x400.png' %}" media="(min-width: 768px)">
-                             <!----- Medium devices (landscape tablets, 768px and up) ----->
-                             <source srcset="{% static 'img/800x400.png' %}" media="(min-width: 576px)">
-                             <!------ Small devices phones, large phones, 600px and up) ----->
-                             <img src="{% static 'img/600x400.png' %}" alt="responsive image" class="d-block img-fluid">
-                         </picture>
-                    </div>
-                    <div class="carousel-item">
-                         <picture>
-                             <!----- Large devices (laptops/desktops, 992px and up) ------->
-                             <source srcset="{% static 'img/2000x400.png' %}" media="(min-width: 768px)">
-                             <!----- Medium devices (landscape tablets, 768px and up) ----->
-                             <source srcset="{% static 'img/800x400.png' %}" media="(min-width: 576px)">
-                             <!------ Small devices phones, large phones, 600px and up) ----->
-                             <img src="{% static 'img/600x400.png' %}" alt="responsive image" class="d-block img-fluid">
-                         </picture>
-                    </div>
-                    <div class="carousel-item">
-                        <picture>
-                            <!----- Large devices (laptops/desktops, 992px and up) ------->
-                             <source srcset="{% static 'img/2000x400.png' %}" media="(min-width: 768px)">
-                             <!----- Medium devices (landscape tablets, 768px and up) ----->
-                             <source srcset="{% static 'img/800x400.png' %}" media="(min-width: 576px)">
-                             <!------ Small devices phones, large phones, 600px and up) ----->
-                             <img src="{% static 'img/600x400.png' %}" alt="responsive image" class="d-block img-fluid">
-                         </picture>
+    <section id="blog">
+        <div class="container">
+            <h3>Featured Posts</h3>
+            <hr>
+            <div class="row no-gutters">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-md-2  pb-md-2 mb-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'img/blog.PNG' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <a href="#" class="card-title card-link h5">
+                                Wastewater Treatment Plants
+                            </a>
+                            <p class="card-text card_text_design">
+                                Hydrogen gas is generated from multiple different ways and is typically produced mixed with extraneous matter. Two of the most typical ways to create hydrogen are chemical synthesis by steam …
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent border-success">
+                            <a href="#" class="card-link">Read More..</a>
+                            <small class="text-muted float-right">Nov. 21, 2020</small>
+                        </div>
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-md-2  pb-md-2  mb-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'img/blog.PNG' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <a href="#" class="card-title card-link h5">
+                                Wastewater Treatment Plants
+                            </a>
+                            <p class="card-text card_text_design">
+                                Hydrogen gas is generated from multiple different ways and is typically produced mixed with extraneous matter. Two of the most typical ways to create hydrogen are chemical synthesis by steam …
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent border-success">
+                            <a href="#" class="card-link">Read More..</a>
+                            <small class="text-muted float-right">Nov. 21, 2020</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-md-2  pb-md-2  mb-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'img/blog.PNG' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <a href="#" class="card-title card-link h5">
+                                Wastewater Treatment Plants
+                            </a>
+                            <p class="card-text card_text_design">
+                                Hydrogen gas is generated from multiple different ways and is typically produced mixed with extraneous matter. Two of the most typical ways to create hydrogen are chemical synthesis by steam …
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent border-success">
+                            <a href="#" class="card-link">Read More..</a>
+                            <small class="text-muted float-right">Nov. 21, 2020</small>
+                        </div>
+                    </div>
+                </div>
             </div>
-        {% endif %}
+        </div>
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="{% static 'img/blog2.PNG' %}" class="w-100" alt="Advantages and Disadvantages of Wave Energy"/>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <a class="h4" href="#" title="Advantages and Disadvantages of Wave Energy">Advantages and Disadvantages of Wave Energy</a>
+                                <p class="card-text">
+                                    <small class="text-muted">Nov. 14, 2020</small>
+                                </p>
+                                <p class="card-text">Advantages of Wave Energy1) RenewableSimilar to most renewable energy sources, wave power is also renewable. Since this energy source ultimately comes from waves crashing upon the shores of many countries near the populated coastal regions, it will not disappear.2) Environment …</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="{% static 'img/blog2.PNG' %}" class="w-100" alt="Advantages and Disadvantages of Wave Energy"/>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <a class="h4" href="#" title="Advantages and Disadvantages of Wave Energy">Roadmap To Build A Comment System</a>
+                                <p class="card-text">
+                                    <small class="text-muted">Nov. 14, 2020</small>
+                                </p>
+                                <p class="card-text">
+                                    Since Python 3 is the current version in active development and addressed as the future of Python, Django rolled out a significant update, and now all the releases after Django 2.0 are only compatible with Python 3.x. Therefore this tutorial is strictly for Python 3.x
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-
-
 
 {% endblock content %}

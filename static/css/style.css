@@ -5,28 +5,33 @@
 
 body {
     margin:0;
-    background: white;
-    font-family:'Open Sans', sans-serif;
+    background: #ECF0F1;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-#myHeader{
-    background-color: #343A40; !important;
+.card-link{
+    color: #18BC9C !important;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.card_text_design{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    text-align: justify;
+}
+
+
+
+#main-footer{
+    background-color: #343A40;
     color: #fff;
 }
 
-#main-footer{
-  background-color: #343A40;
-  color: #fff;
-}
 
-.jumbotron{
-    padding: 3rem !important;
-    background-image: url("/static/img/breadcrumb.png") !important;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    color: white;
-}
 .btn-primary{
     background: #42AEEC !important;
     color: white;
