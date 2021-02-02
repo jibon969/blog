@@ -1,7 +1,154 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} Home || {{ block.super }}{% endblock title %}
 
 {% block content %}
+
+
+    <section id="sliderSection">
+        {% if object_list.exists %}
+            <!------------------------------------ Dynamic Slider ----------------------->
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    {% for s in object_list %}
+                        {% if s.url_field %}
+                            {% if forloop.counter == 1 %}
+                                <div class="carousel-item active">
+                                    <a href="{{ s.url_field }}">
+                                        <picture>
+                                            {% if s.largeDevices %}
+                                                <!--------- Large devices (laptops/desktops, 992px and up) --------->
+                                                <source srcset="{{ s.largeDevices.url }}" media="(min-width: 768px)">
+                                            {% endif %}
+                                            {% if s.mediumDevices %}
+                                                <!--------- Medium devices (landscape tablets, 768px and up) -------->
+                                                <source srcset="{{ s.mediumDevices.url }}" media="(min-width: 576px)">
+                                            {% endif %}
+                                            {% if s.smallDevices %}
+                                                <img  src="{{ s.smallDevices.url }}" alt="responsive image" class="d-block img-fluid">
+                                                <!---------------- Small devices phones, large phones, 600px and up) ------------------>
+                                            {% endif %}
+                                        </picture>
+                                    </a>
+                                </div>
+                            {% else %}
+                                <div class="carousel-item">
+                                    <a href="{{ s.url_field }}">
+                                        <picture>
+                                            {% if s.largeDevices %}
+                                                <!--------- Large devices (laptops/desktops, 992px and up) --------->
+                                                <source srcset="{{ s.largeDevices.url }}" media="(min-width: 768px)">
+                                            {% endif %}
+                                            {% if s.mediumDevices %}
+                                                <!--------- Medium devices (landscape tablets, 768px and up) -------->
+                                                <source srcset="{{ s.mediumDevices.url }}" media="(min-width: 576px)">
+                                            {% endif %}
+                                            {% if s.smallDevices %}
+                                                <img  src="{{ s.smallDevices.url }}" alt="responsive image" class="d-block img-fluid">
+                                                <!---------------- Small devices phones, large phones, 600px and up) ------------------>
+                                            {% endif %}
+                                        </picture>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            {% if forloop.counter == 1 %}
+                                <div class="carousel-item active">
+                                    <a href="#">
+                                        <picture>
+                                            {% if s.largeDevices %}
+                                                <!--------- Large devices (laptops/desktops, 992px and up) --------->
+                                                <source srcset="{{ s.largeDevices.url }}" media="(min-width: 768px)">
+                                            {% endif %}
+                                            {% if s.mediumDevices %}
+                                                <!--------- Medium devices (landscape tablets, 768px and up) -------->
+                                                <source srcset="{{ s.mediumDevices.url }}" media="(min-width: 576px)">
+                                            {% endif %}
+                                            {% if s.smallDevices %}
+                                                <img  src="{{ s.smallDevices.url }}" alt="responsive image" class="d-block img-fluid">
+                                                <!---------------- Small devices phones, large phones, 600px and up) ------------------>
+                                            {% endif %}
+                                        </picture>
+                                    </a>
+                                </div>
+                            {% else %}
+                                <div class="carousel-item">
+                                    <a href="#">
+                                        <picture>
+                                            {% if s.largeDevices %}
+                                                <!--------- Large devices (laptops/desktops, 992px and up) --------->
+                                                <source srcset="{{ s.largeDevices.url }}" media="(min-width: 768px)">
+                                            {% endif %}
+                                            {% if s.mediumDevices %}
+                                                <!--------- Medium devices (landscape tablets, 768px and up) -------->
+                                                <source srcset="{{ s.mediumDevices.url }}" media="(min-width: 576px)">
+                                            {% endif %}
+                                            {% if s.smallDevices %}
+                                                <img  src="{{ s.smallDevices.url }}" alt="responsive image" class="d-block img-fluid">
+                                                <!---------------- Small devices phones, large phones, 600px and up) ------------------>
+                                            {% endif %}
+                                        </picture>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        {% else %}
+            <!------------------------------------- Static Slider ----------------------->
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                         <picture>
+                             <!----- Large devices (laptops/desktops, 992px and up) ------->
+                             <source srcset="{% static 'img/2000x400.png' %}" media="(min-width: 768px)">
+                             <!----- Medium devices (landscape tablets, 768px and up) ----->
+                             <source srcset="{% static 'img/800x400.png' %}" media="(min-width: 576px)">
+                             <!------ Small devices phones, large phones, 600px and up) ----->
+                             <img src="{% static 'img/600x400.png' %}" alt="responsive image" class="d-block img-fluid">
+                         </picture>
+                    </div>
+                    <div class="carousel-item">
+                         <picture>
+                             <!----- Large devices (laptops/desktops, 992px and up) ------->
+                             <source srcset="{% static 'img/2000x400.png' %}" media="(min-width: 768px)">
+                             <!----- Medium devices (landscape tablets, 768px and up) ----->
+                             <source srcset="{% static 'img/800x400.png' %}" media="(min-width: 576px)">
+                             <!------ Small devices phones, large phones, 600px and up) ----->
+                             <img src="{% static 'img/600x400.png' %}" alt="responsive image" class="d-block img-fluid">
+                         </picture>
+                    </div>
+                    <div class="carousel-item">
+                        <picture>
+                            <!----- Large devices (laptops/desktops, 992px and up) ------->
+                             <source srcset="{% static 'img/2000x400.png' %}" media="(min-width: 768px)">
+                             <!----- Medium devices (landscape tablets, 768px and up) ----->
+                             <source srcset="{% static 'img/800x400.png' %}" media="(min-width: 576px)">
+                             <!------ Small devices phones, large phones, 600px and up) ----->
+                             <img src="{% static 'img/600x400.png' %}" alt="responsive image" class="d-block img-fluid">
+                         </picture>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        {% endif %}
+    </section>
 
 
 
