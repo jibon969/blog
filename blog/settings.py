@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 3rd Party Library
+    'django.contrib.humanize',
     'crispy_forms',
     'ckeditor',         # CKEditor
     'import_export',    # Csv or Excel files

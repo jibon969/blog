@@ -11,19 +11,19 @@
             <hr>
         </div>
     </div>
-    
-
-    
 
     <section id="blog">
         <div class="container">
-            <h3>Featured Posts</h3>
-            <hr>
+            {% if search %}
+                {% else %}
+                <h3>Featured Posts</h3>
+                <hr>
+            {% endif %}
             <div class="row no-gutters">
                 {% for obj in object_list %}
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-md-2  pb-md-2 mb-3">
                         <div class="card">
-                            <a href="#">
+                            <a href="{% url 'blog-detail' obj.slug %}">
                                 {% if obj.image %}
                                     <img class="card-img-top img-fluid " src="{{ obj.image.url }}" alt="Card image cap" style="width: 360px; height: 180px !important;">
                                 {% else %}
@@ -31,7 +31,7 @@
                                 {% endif %}
                             </a>
                             <div class="card-body">
-                                <a href="#" class="card-title card-link h5">
+                                <a href="{% url 'blog-detail' obj.slug %}" class="card-title card-link h5">
                                     {{ obj.title }}
                                 </a>
                                 <p class="card-text card_text_design">{{ obj.description|safe|truncatechars:100 }}</p>
@@ -42,6 +42,26 @@
                             </div>
                         </div>
                     </div>
+                {% empty %}
+                    {% if search %}
+                        <div class="col my-5">
+                            <h2 class="text-center text-black-50 mt-3">No result for {{ search }}</h2>
+                            <h5 class="text-center text-muted">Try checking your spelling or use more general terms</h5>
+                            <h3 class="text-center my-3">
+                                <a href="{% url 'home' %}">Back to Blog list</a>
+                            </h3>
+                            <div style="margin-top: 160px"></div>
+                        </div>
+                    {% else %}
+                        <div class="col my-5">
+                            <h2 class="text-center text-black-50 mt-3 font-weight-bold mt-5">Remain with us for this upcoming topic</h2>
+                            <h5 class="text-center text-muted">Try see your spelling or use more general terms</h5>
+                            <h3 class="text-center my-3">
+                                <a href="{% url 'home' %}">Back to Blog</a>
+                            </h3>
+                            <div style="margin-top: 160px"></div>
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
@@ -49,7 +69,9 @@
             <div class="row no-gutters">
                 <div class="col">
                     <div class="float-right">
-                        {% include 'paginations/pagination.html' %}
+                        {% if object_list %}
+                            {% include 'paginations/pagination.html' %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
