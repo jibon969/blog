@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # Register apps
     'home.apps.HomeConfig',
     'contactUs.apps.ContactusConfig',
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

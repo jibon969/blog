@@ -1,0 +1,65 @@
+{% extends 'master.html' %}
+
+{% block title %}Login | {{ block.super }} {% endblock %}
+
+{% block content %}
+
+
+    <div style="margin-bottom: 70px"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col col-sm-8 col-md-9 col-lg-4 col-xl-4 mx-auto">
+                <h3 class="font-weight-bold text-center my-2">
+                    <a href="{% url 'home' %}">Blog</a>
+                </h3>
+                <!--- Massage Framework --->
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="text-center">
+                            <span>{{ message }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+                <!---- End Message --->
+                <div class="card" style="height: 400px">
+                    <article class="card-body mb-0">
+                        <a href="{% url 'register' %}" class="float-right btn btn-outline-primary">Sign up</a>
+                        <h4 class="card-title mb-4 mt-1">Sign in</h4>
+                        <p>
+                            <a href="" class="btn btn-block btn-primary"> <i class="fa fa-twitter"></i> &nbsp; Login via Twitter</a>
+                            <a href="" class="btn btn-block btn-success"> <i class="fa fa-facebook-f"></i> &nbsp; Login via facebook</a>
+                        </p>
+                        <hr>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                     </div>
+                                    <input type="text" name="user" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-lock"></i> </span>
+                                    </div>
+                                   <input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block"> Login </button>
+                            </div>
+                            <p class="text-center"><a href="{% url 'password_reset' %}" class="mb-0">Did you forget your password?</a></p>
+                         </form>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

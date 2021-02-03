@@ -1,0 +1,66 @@
+{% extends "master.html" %}
+{% load crispy_forms_tags %}
+{% block title %} Signup | {{ block.super }} {% endblock %}
+
+{% block content %}
+
+    <div style="margin-bottom: 50px"></div>
+
+    <div id="signupSection">
+        <div class="container">
+            <div class="row">
+                <div class="col col-sm-8 col-md-9 col-lg-5 col-xl-5 mx-auto">
+                    <h3 class="text-center font-weight-bold mb-3"><a href="{% url 'home' %}">Blog</a></h3>
+                    <!--- Massage Framework --->
+                    {% for message in messages %}
+                        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="text-center">
+                                <span>{{ message }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <!---- End Message --->
+
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input type="text" name="first_name" maxlength="30" class="form-control" placeholder="First Name">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input  type="text" name="last_name" maxlength="30" class="form-control"  placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="username" maxlength="150" class="form-control"  placeholder="Username">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" maxlength="254" class="form-control"  placeholder="E-mail">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password1" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password2"  class="form-control" placeholder="Conform Password">
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                            </form>
+                        </div>
+                        <div class="card-footer" style="height: 50px">
+                            <p class="text-center">Already have an account?<a href="{% url 'login' %}"><span class="mx-2">Login</span></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="margin-bottom: 80px"></div>
+{% endblock %}

@@ -12,7 +12,8 @@
     <meta name="keywords" content="jekyll, minimal jekyll, jekyll theme, responsive jekyll, seo friendly blog, super fast blog, responsive">
     <title>{% block title %} Blog {% endblock title %}</title>
     <!-- Include all css file -->
-    {% include 'base/css.html' %}
+    <link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 
 <body>
