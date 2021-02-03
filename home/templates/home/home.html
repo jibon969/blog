@@ -4,105 +4,52 @@
 
 {% block content %}
 
-    <div class="jumbotron-fluid" style="background: #29B6F6">
+    <div class="jumbotron-fluid " style="background: #29B6F6">
         <div class="container">
-            <h1 class="text-center" style="font-size:3vw; color: white; margin-bottom:0;">Engineering Stack</h1>
-            <p class="text-center" style="font-size:2.2vw; color: white;">Learn, share and advance your professional career</p>
+            <h1 class="text-center text-white">Engineering Stack</h1>
+            <h4 class="text-center text-white mb-3">Learn, share and advance your professional career</h4>
+            <hr>
         </div>
     </div>
+    
+
+    
 
     <section id="blog">
         <div class="container">
             <h3>Featured Posts</h3>
             <hr>
             <div class="row no-gutters">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-md-2  pb-md-2 mb-3">
-                    <div class="card">
-                        <img class="card-img-top" src="{% static 'img/blog.PNG' %}" alt="Card image cap">
-                        <div class="card-body">
-                            <a href="#" class="card-title card-link h5">
-                                Wastewater Treatment Plants
+                {% for obj in object_list %}
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-md-2  pb-md-2 mb-3">
+                        <div class="card">
+                            <a href="#">
+                                {% if obj.image %}
+                                    <img class="card-img-top img-fluid " src="{{ obj.image.url }}" alt="Card image cap" style="width: 360px; height: 180px !important;">
+                                {% else %}
+                                    <img class="card-img-top img-fluid " src="{% static 'img/blog.PNG' %}" alt="Card image cap" style="width: 360px; height: 180px !important;">
+                                {% endif %}
                             </a>
-                            <p class="card-text card_text_design">
-                                Hydrogen gas is generated from multiple different ways and is typically produced mixed with extraneous matter. Two of the most typical ways to create hydrogen are chemical synthesis by steam …
-                            </p>
-                        </div>
-                        <div class="card-footer bg-transparent border-success">
-                            <a href="#" class="card-link">Read More..</a>
-                            <small class="text-muted float-right">Nov. 21, 2020</small>
+                            <div class="card-body">
+                                <a href="#" class="card-title card-link h5">
+                                    {{ obj.title }}
+                                </a>
+                                <p class="card-text card_text_design">{{ obj.description|safe|truncatechars:100 }}</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-success">
+                                <a href="#" class="card-link">Read More..</a>
+                                <small class="text-muted float-right">{{ obj.timestamp }}</small>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-md-2  pb-md-2  mb-3">
-                    <div class="card">
-                        <img class="card-img-top" src="{% static 'img/blog.PNG' %}" alt="Card image cap">
-                        <div class="card-body">
-                            <a href="#" class="card-title card-link h5">
-                                Wastewater Treatment Plants
-                            </a>
-                            <p class="card-text card_text_design">
-                                Hydrogen gas is generated from multiple different ways and is typically produced mixed with extraneous matter. Two of the most typical ways to create hydrogen are chemical synthesis by steam …
-                            </p>
-                        </div>
-                        <div class="card-footer bg-transparent border-success">
-                            <a href="#" class="card-link">Read More..</a>
-                            <small class="text-muted float-right">Nov. 21, 2020</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pr-md-2  pb-md-2  mb-3">
-                    <div class="card">
-                        <img class="card-img-top" src="{% static 'img/blog.PNG' %}" alt="Card image cap">
-                        <div class="card-body">
-                            <a href="#" class="card-title card-link h5">
-                                Wastewater Treatment Plants
-                            </a>
-                            <p class="card-text card_text_design">
-                                Hydrogen gas is generated from multiple different ways and is typically produced mixed with extraneous matter. Two of the most typical ways to create hydrogen are chemical synthesis by steam …
-                            </p>
-                        </div>
-                        <div class="card-footer bg-transparent border-success">
-                            <a href="#" class="card-link">Read More..</a>
-                            <small class="text-muted float-right">Nov. 21, 2020</small>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
         <div class="container">
             <div class="row no-gutters">
-                <div class="card mb-3">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="{% static 'img/blog2.PNG' %}" class="w-100" alt="Advantages and Disadvantages of Wave Energy"/>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <a class="h4" href="#" title="Advantages and Disadvantages of Wave Energy">Advantages and Disadvantages of Wave Energy</a>
-                                <p class="card-text">
-                                    <small class="text-muted">Nov. 14, 2020</small>
-                                </p>
-                                <p class="card-text">Advantages of Wave Energy1) RenewableSimilar to most renewable energy sources, wave power is also renewable. Since this energy source ultimately comes from waves crashing upon the shores of many countries near the populated coastal regions, it will not disappear.2) Environment …</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="{% static 'img/blog2.PNG' %}" class="w-100" alt="Advantages and Disadvantages of Wave Energy"/>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <a class="h4" href="#" title="Advantages and Disadvantages of Wave Energy">Roadmap To Build A Comment System</a>
-                                <p class="card-text">
-                                    <small class="text-muted">Nov. 14, 2020</small>
-                                </p>
-                                <p class="card-text">
-                                    Since Python 3 is the current version in active development and addressed as the future of Python, Django rolled out a significant update, and now all the releases after Django 2.0 are only compatible with Python 3.x. Therefore this tutorial is strictly for Python 3.x
-                                </p>
-                            </div>
-                        </div>
+                <div class="col">
+                    <div class="float-right">
+                        {% include 'paginations/pagination.html' %}
                     </div>
                 </div>
             </div>

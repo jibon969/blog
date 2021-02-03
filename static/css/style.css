@@ -25,26 +25,6 @@ body {
 }
 
 
-
-#main-footer{
-    background-color: #343A40;
-    color: #fff;
-}
-
-
-.btn-primary{
-    background: #42AEEC !important;
-    color: white;
-    border: none;
-}
-
-.btn-success{
-    background: #405D9D !important;
-    color: white;
-    border: none;
-}
-
-
 /* Fixed/sticky icon bar (vertically aligned 50% from the top of the screen) */
 .icon-bar {
   position: fixed;
