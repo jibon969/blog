@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load humanize %}
+{% block title %}Blog Details{% endblock title %}
+
+{% block content %}
+
+    <section id="blog_detail">
+        <div class="container my-4">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        {% if object.image %}
+                            <div class="card-img text-center">
+                                <img class="img-fluid" src="{{ object.image.url }}"  alt="Oops image not found" style="width: 100%; height: 400px !important;">
+                            </div>
+                        {% else %}
+                            <div class="card-img text-center">
+                                <img class="img-fluid" src="{% static 'img/blog.PNG' %}"  alt="Oops image not found" style="width: 100%; height: 400px !important;">
+                            </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <h3 class="mb-3">{{ object.title }}</h3>
+                            <p class="text-justify">{{ object.description|safe }}</p>
+                            <p class="mt-2 font-weight-bold">Time : {{ object.timestamp|naturaltime }}</p>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <!-- comments -->
+                            <h2>{{ comments.count }} comments</h2>
+                            {% for comment in comments %}
+                                <div class="comments" style="padding: 10px;">
+                                    <p class="font-weight-bold">
+                                        {{ comment.name }}
+                                        <span class=" text-muted font-weight-normal">
+                                            {{ comment.created_on }}
+                                        </span>
+                                    </p>
+                                    {{ comment.body | linebreaks }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            {% if new_comment %}
+                                <div class="alert alert-success" role="alert">
+                                    Your comment is awaiting moderation
+                                </div>
+                            {% else %}
+                                <h3 class="mb-3">Leave a comment</h3>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <input type="text" name="name" placeholder="Please enter your name *" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <input type="email" name="email" placeholder="Please enter e-mail address" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col mb-3">
+                                            <textarea class="form-control" name="body" rows="4" placeholder="Enter your comment"></textarea>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <!---- Recent Post ---->
+                <aside class="col-md-4">
+                    <div class="card mb-3">
+                        <h4 class="card-header">Recent Post</h4>
+                    </div>
+                    {% for r in recent_post %}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4 border-right">
+                                        {% if r.image %}
+                                            <a href="{% url 'blog-detail' r.slug %}" class="text-center">
+                                                <img src="{{ r.image.url }}" class="img-fluid img-thumbnail" style="width: 100%; height: 80px" alt="Oops image not found">
+                                            </a>
+                                        {% else %}
+                                            <a href="{% url 'blog-detail' r.slug %}" class="text-center">
+                                                <img src="{% static 'img/blog2.PNG' %}" style="width: 100%; height: 80px" class="img-fluid img-thumbnail" alt="Oops image not found">
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-8">
+                                        <a href="{% url 'blog-detail' r.slug %}">
+                                            <p class="mb-2">{{ r.title|truncatechars:50 }}</p>
+                                        </a>
+                                        <p>{{ r.timestamp|naturaltime }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </aside>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="margin_bottom"></div>
+{% endblock content %}

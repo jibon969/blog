@@ -11,31 +11,46 @@
                     <a href="{% url 'home' %}" class="nav-link font-weight-bold text-white">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link font-weight-bold text-white">Html</a>
+                    <a href="{% url 'category' 'html' %}" class="nav-link font-weight-bold text-white">Html</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link font-weight-bold text-white">Css</a>
+                    <a href="{% url 'category' 'css' %}" class="nav-link font-weight-bold text-white">Css</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link font-weight-bold text-white">Bootstrap</a>
+                    <a href="{% url 'category' 'bootstrap' %}" class="nav-link font-weight-bold text-white">Bootstrap</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link font-weight-bold text-white">Javascripts</a>
+                    <a href="{% url 'category' 'javascript' %}" class="nav-link font-weight-bold text-white">Javascripts</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link font-weight-bold text-white">Python</a>
+                    <a href="{% url 'category' 'python' %}" class="nav-link font-weight-bold text-white">Python</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link font-weight-bold text-white">Django</a>
+                    <a href="{% url 'category' 'django' %}" class="nav-link font-weight-bold text-white">Django</a>
                 </li>
                 <li class="nav-item">
                     <a href="{% url 'contact' %}" class="nav-link font-weight-bold text-white">Contact</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <form method='GET'>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="q" id="search_input"  value="{{ request.GET.q }}"  placeholder="Search here">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
             </form>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a  class="nav-link" href="#">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-link">|</span>
+                </li>
+                <li class="nav-item ml-1">
+                    <a  class="nav-link" href="#" >Join now</a>
+                </li>
+            </ul>
         </div>
     </nav>
 </div>

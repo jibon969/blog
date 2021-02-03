@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Category Form {% endblock %}
+
+{% block content %}
+
+    <section id="subCategory">
+        <div class="container my-5">
+            <h2 class="text-center">
+                <a href="{% url 'blog-sub-category-list' %}">Back to SubCategory List</a>
+            </h2>
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-md-7">
+                    <div class="card">
+                        <div class="card-header card_header">
+                            <h4>Category Form</h4>
+                        </div>
+                        <div class="card-body card_body_color">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="form-group col">
+                                        {{ form.title|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <button class="btn btn-info btn-block mb-3">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock content %}

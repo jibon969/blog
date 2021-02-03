@@ -1,5 +1,6 @@
 from .models import Comment, Blog, BlogBanner, BlogCategory, BlogSubCategory
 from django import forms
+from django.forms import Textarea
 
 
 class BlogForm(forms.ModelForm):
@@ -11,6 +12,10 @@ class BlogForm(forms.ModelForm):
             'category',
             'description'
         ]
+        # Override the Customer some fields
+        widgets = {
+            'date': Textarea(attrs={'rows': 2, 'cols': 2}),
+        }
 
 
 class CommentForm(forms.ModelForm):
